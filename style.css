@@ -1,0 +1,73 @@
+.send-message-animation {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.send-message-animation button {
+    margin: auto;
+    cursor: pointer;
+    position: relative;
+    border-radius: .5em;
+    display: inline-block;
+    font-size: 16px;
+    width: 9.375em;
+    height: 3.125em;
+    color: #3c2e9e;
+    background: #f3f3f3;
+    overflow: hidden;
+}
+.send-message-animation button:focus {
+    animation: morph 1.25s forwards;
+}
+.send-message-animation button > * {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+}
+.send-message-animation i {
+    display: none;
+}
+.send-message-animation .sent,
+.send-message-animation button:focus span {
+    opacity: 0;
+    visibility: hidden;
+}
+.send-message-animation button:focus .sent {
+    animation: reveal 1s 1.25s forwards;
+}
+.send-message-animation button:focus i {
+    display: block;
+    animation: takeOff 1s forwards;
+}
+@keyframes reveal {
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+@keyframes morph {
+    10%, 80% {
+        width: 3.125em;
+        border-radius: 50%;
+        background: #f3f3f3;
+        color: #3c2e9e;
+    }
+    100% {
+        color: #f3f3f3;
+        background: #3c2e9e;
+    }
+}
+@keyframes takeOff {
+    5%, 15%, 25%, 35%, 45% {
+        transform: translate(-47%,-50%);
+    }
+    10%, 20%, 30%, 40%, 50% {
+        transform: translate(-53%,-50%);
+    }
+    90%, 100% {
+        transform: translate(100px,-100px);
+    }
+}
