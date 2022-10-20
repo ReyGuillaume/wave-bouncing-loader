@@ -1,73 +1,33 @@
-.send-message-animation {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-}
-.send-message-animation button {
-    margin: auto;
-    cursor: pointer;
+.carousel-gallery-3d-auto {
+    margin: 50px auto;
+    font-size: 1vw;
+    width: 20em;
+    height: 15em;
     position: relative;
-    border-radius: .5em;
-    display: inline-block;
-    font-size: 16px;
-    width: 9.375em;
-    height: 3.125em;
-    color: #3c2e9e;
-    background: #f3f3f3;
-    overflow: hidden;
+    transform-style: preserve-3d;
+    animation: circularCarousel3D 20s linear infinite;
 }
-.send-message-animation button:focus {
-    animation: morph 1.25s forwards;
-}
-.send-message-animation button > * {
+.carousel-gallery-3d-auto span {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
     width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: rotateY(calc(var(--item) * 60deg)) translateZ(30em);
+    /* ^ 6 images --> 360 / 6 = 60deg */
 }
-.send-message-animation i {
-    display: none;
+.carousel-gallery-3d-auto span img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
-.send-message-animation .sent,
-.send-message-animation button:focus span {
-    opacity: 0;
-    visibility: hidden;
-}
-.send-message-animation button:focus .sent {
-    animation: reveal 1s 1.25s forwards;
-}
-.send-message-animation button:focus i {
-    display: block;
-    animation: takeOff 1s forwards;
-}
-@keyframes reveal {
-    100% {
-        opacity: 1;
-        visibility: visible;
+@keyframes circularCarousel3D {
+    form {
+        transform: rotateY(0deg);
+        perspective: 1200px;
     }
-}
-@keyframes morph {
-    10%, 80% {
-        width: 3.125em;
-        border-radius: 50%;
-        background: #f3f3f3;
-        color: #3c2e9e;
-    }
-    100% {
-        color: #f3f3f3;
-        background: #3c2e9e;
-    }
-}
-@keyframes takeOff {
-    5%, 15%, 25%, 35%, 45% {
-        transform: translate(-47%,-50%);
-    }
-    10%, 20%, 30%, 40%, 50% {
-        transform: translate(-53%,-50%);
-    }
-    90%, 100% {
-        transform: translate(100px,-100px);
+    to {
+        transform: rotateY(360deg);
     }
 }
